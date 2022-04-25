@@ -1,18 +1,28 @@
 import { useQuery } from "react-query";
 import styled from "styled-components";
 const Section = styled.section``;
-const Container = styled.div``;
+const Container = styled.div`
+  max-width: 800px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+`;
 const CharacterCard = styled.div`
   padding: 2rem;
-  border: 1px solid grey;
-  max-width: 500px;
+  border-radius: 5px;
   margin: auto;
-  margin-bottom: 2rem;
+  background-color: #272b30;
+  width: 100%;
   h2 {
     text-align: center;
+    color: white;
+    margin-bottom: 1rem;
   }
   li {
     list-style-type: none;
+    color: white;
+    margin-bottom: 0.6rem;
   }
 `;
 
@@ -27,17 +37,18 @@ function App() {
   return (
     <Section>
       <Container>
-        <ul>
-          {data.results.map((char) => {
-            return (
-              <CharacterCard>
-                <h2>{char.name}</h2>
+        {data.results.map((char) => {
+          return (
+            <CharacterCard>
+              <h2>{char.name}</h2>
+              <ul>
                 <li>born: {char.birth_year}</li>
                 <li>gender: {char.gender}</li>
-              </CharacterCard>
-            );
-          })}
-        </ul>
+                <li>height: {char.height} cm</li>
+              </ul>
+            </CharacterCard>
+          );
+        })}
       </Container>
     </Section>
   );
