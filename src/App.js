@@ -1,4 +1,5 @@
 import { useQuery } from "react-query";
+import styled from "styled-components";
 
 function App() {
   const { isLoading, error, data } = useQuery("people", () =>
