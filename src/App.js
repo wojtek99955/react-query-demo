@@ -25,6 +25,19 @@ const CharacterCard = styled.div`
     margin-bottom: 0.6rem;
   }
 `;
+const Buttons = styled.div`
+  button {
+    background-color: #1c1e22;
+    color: #ffe301;
+    border: none;
+    padding: 0.6rem 1rem;
+    text-transform: uppercase;
+  }
+  display: flex;
+  justify-content: center;
+  margin: 2rem;
+  gap: 1rem;
+`;
 
 function App() {
   const { isLoading, error, data } = useQuery("people", () =>
@@ -50,6 +63,10 @@ function App() {
           );
         })}
       </Container>
+      <Buttons>
+        <button>prev</button>
+        <button>next</button>
+      </Buttons>
     </Section>
   );
 }
