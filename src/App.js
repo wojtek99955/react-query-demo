@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { useQuery } from "react-query";
 import styled from "styled-components";
+
 const Section = styled.section``;
 const Container = styled.div`
   max-width: 800px;
@@ -32,6 +34,7 @@ const Buttons = styled.div`
     border: none;
     padding: 0.6rem 1rem;
     text-transform: uppercase;
+    cursor: pointer;
   }
   display: flex;
   justify-content: center;
@@ -40,8 +43,13 @@ const Buttons = styled.div`
 `;
 
 function App() {
-  const { isLoading, error, data } = useQuery("people", () =>
-    fetch("https://swapi.dev/api/people/?page=1").then((res) => res.json())
+  const [page, setPage] = useState(1);
+  const { isLoading, error, data } = useQuery(
+    ["people", page],
+    ({ queryKey }) =>
+      fetch(`https://swapi.dev/api/people/?page=${queryKey[1]}`).then((res) =>
+        res.json()
+      )
   );
   console.log(data);
   if (isLoading) return "Loading...";
@@ -64,8 +72,20 @@ function App() {
         })}
       </Container>
       <Buttons>
-        <button>prev</button>
-        <button>next</button>
+        <button
+          disabled={page === 1}
+          onClick={() => {
+            setPage((prev) => prev - 1);
+          }}
+        >
+          prev
+        </button>
+        <button
+          disabled={!data.next}
+          onClick={() => setPage((prev) => prev + 1)}
+        >
+          next
+        </button>
       </Buttons>
     </Section>
   );
