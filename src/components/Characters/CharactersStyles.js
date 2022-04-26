@@ -22,3 +22,16 @@ export const Buttons = styled.div`
   margin: 2rem;
   gap: 1rem;
 `;
+
+export const SpinnerContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+export const ErrorContainer = styled.div`
+  max-width: 200px;
+  margin: auto;
+  p {
+    color: red;
+  }
+`;

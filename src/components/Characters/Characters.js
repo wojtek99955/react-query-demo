@@ -1,14 +1,21 @@
 import { useState } from "react";
 import { useQuery } from "react-query";
 import Character from "../Character/Character";
-import { Section, Container, Buttons } from "./CharactersStyles";
+import {
+  Section,
+  Container,
+  Buttons,
+  SpinnerContainer,
+  ErrorContainer,
+} from "./CharactersStyles";
+import CircularProgress from "@mui/material/CircularProgress";
 
 function Characters() {
   const [page, setPage] = useState(1);
 
   const fetchCharacters = async ({ queryKey }) => {
     const response = await fetch(
-      `https://swapi.dev/api/people/?page=${queryKey[1]}`
+      `https://swapieef.dev/api/people/?page=${queryKey[1]}`
     );
     const data = response.json();
     return data;
@@ -19,9 +26,19 @@ function Characters() {
     fetchCharacters
   );
 
-  if (isLoading) return "Loading...";
+  if (isLoading)
+    return (
+      <SpinnerContainer>
+        <CircularProgress />
+      </SpinnerContainer>
+    );
 
-  if (error) return "An error has occurred: " + error.message;
+  if (error)
+    return (
+      <ErrorContainer>
+        <p>An error has occurred: {error.message}</p>
+      </ErrorContainer>
+    );
   return (
     <Section>
       <Container>
