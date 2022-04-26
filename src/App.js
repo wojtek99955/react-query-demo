@@ -44,14 +44,18 @@ const Buttons = styled.div`
 
 function App() {
   const [page, setPage] = useState(1);
+  const fetchCharacters = async ({ queryKey }) => {
+    const response = await fetch(
+      `https://swapi.dev/api/people/?page=${queryKey[1]}`
+    );
+    const data = response.json();
+    return data;
+  };
   const { isLoading, error, data } = useQuery(
     ["people", page],
-    ({ queryKey }) =>
-      fetch(`https://swapi.dev/api/people/?page=${queryKey[1]}`).then((res) =>
-        res.json()
-      )
+    fetchCharacters
   );
-  console.log(data);
+
   if (isLoading) return "Loading...";
 
   if (error) return "An error has occurred: " + error.message;
