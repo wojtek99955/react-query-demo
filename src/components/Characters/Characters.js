@@ -15,7 +15,7 @@ function Characters() {
 
   const fetchCharacters = async ({ queryKey }) => {
     const response = await fetch(
-      `https://swapieef.dev/api/people/?page=${queryKey[1]}`
+      `https://swapi.dev/api/people/?page=${queryKey[1]}`
     );
     const data = response.json();
     return data;
@@ -36,7 +36,7 @@ function Characters() {
   if (error)
     return (
       <ErrorContainer>
-        <p>An error has occurred: {error.message}</p>
+        <p>An error has occurred {error.message}</p>
       </ErrorContainer>
     );
   return (

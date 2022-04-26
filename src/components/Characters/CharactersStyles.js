@@ -16,6 +16,7 @@ export const Buttons = styled.div`
     padding: 0.6rem 1rem;
     text-transform: uppercase;
     cursor: pointer;
+    border-radius: 5px;
   }
   display: flex;
   justify-content: center;
