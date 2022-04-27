@@ -17,6 +17,12 @@ export const Buttons = styled.div`
     text-transform: uppercase;
     cursor: pointer;
     border-radius: 5px;
+
+    &:disabled {
+      background-color: #b8bcc4;
+      color: #ffff65;
+      cursor: default;
+    }
   }
   display: flex;
   justify-content: center;
