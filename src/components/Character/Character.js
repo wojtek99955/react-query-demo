@@ -8,6 +8,7 @@ function Character({ char }) {
         <li>born: {char.birth_year}</li>
         <li>gender: {char.gender}</li>
         <li>height: {char.height} cm</li>
+        <li>hair color: {char.hair_color}</li>
       </ul>
     </CharacterCard>
   );
