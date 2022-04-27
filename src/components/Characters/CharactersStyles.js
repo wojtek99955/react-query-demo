@@ -7,6 +7,10 @@ export const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.5rem;
+  @media (max-width: 736px) {
+    grid-template-columns: 1fr;
+    margin: 0 1rem;
+  }
 `;
 export const Buttons = styled.div`
   button {
