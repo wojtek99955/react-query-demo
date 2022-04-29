@@ -6,7 +6,7 @@ Star wars characters list fetch using react-query
 
 ## Live
 
-Link: https://statuesque-cannoli-d97157.netlify.app/
+Link: https://wojtekk-react-query.netlify.app/
 
 ## Technologies
 
